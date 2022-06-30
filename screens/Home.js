@@ -1,8 +1,8 @@
-import { Text, View, FlatList, Image, Pressable } from "react-native";
+import { Text, View, FlatList, Pressable } from "react-native";
 import React from "react";
 import { globalStyles } from "../style/AppStyles";
-import  Colors  from "../style/Colors"
-
+import Colors from "../style/Colors";
+import PressableItems from "../components/PressableItems";
 
 const Home = ({ navigation }) => {
   const DATA = [
@@ -13,7 +13,7 @@ const Home = ({ navigation }) => {
       country: "Allemagne",
       totalImg: 3,
       img: "https://cdn.pixabay.com/photo/2017/12/17/08/44/girl-3023853_960_720.jpg",
-      favColor: "blueviolet"
+      favColor: "blueviolet",
     },
     {
       id: "2",
@@ -22,8 +22,7 @@ const Home = ({ navigation }) => {
       country: "France",
       totalImg: 5,
       img: "https://cdn.pixabay.com/photo/2018/04/27/03/50/portrait-3353699_960_720.jpg",
-      favColor: "firebrick"
-
+      favColor: "firebrick",
     },
     {
       id: "3",
@@ -32,8 +31,7 @@ const Home = ({ navigation }) => {
       country: "Espagne",
       totalImg: 4,
       img: "https://cdn.pixabay.com/photo/2019/08/13/05/39/girl-4402542_960_720.jpg",
-      favColor: "olive"
-
+      favColor: "olive",
     },
     {
       id: "4",
@@ -42,41 +40,26 @@ const Home = ({ navigation }) => {
       country: "Italie",
       totalImg: 5,
       img: "https://cdn.pixabay.com/photo/2017/03/24/18/59/face-2171923_960_720.jpg",
-      favColor: "orangered"
-
+      favColor: "orangered",
     },
   ];
 
   const renderProfiles = ({ item }) => {
     return (
-          
-        <Pressable 
-          //onPress = {() => navigation.navigate('Portfolio', item ) }
-          onPress= {() => navigation.navigate( {
-            routeName: 'Portfolio',
+      <PressableItems
+        item={item}
+        handleNavigate={() =>
+          navigation.navigate({
+            routeName: "Portfolio",
             params: {
-              name : item.name, 
-              country: item.country, 
+              name: item.name,
+              country: item.country,
               totalImg: item.totalImg,
-              favColor: item.favColor
-            }
-          }
-
-          )}
-          style={  ({pressed} ) => [
-            {backgroundColor: pressed ? Colors.clicked : Colors.white } , 
-            globalStyles.itemContainer
-          ]   }>
-
-          <Text style={globalStyles.h1}>{item.name}</Text>
-          <Image source={{ uri: item.img }} style={globalStyles.profileImg} />
-
-
-        <View style={globalStyles.infoContainer}>
-          <Text style={globalStyles.h2}>{item.country}</Text>
-          <Text style={globalStyles.text}>{item.totalImg}</Text>
-        </View>
-        </Pressable>
+              favColor: item.favColor,
+            },
+          })
+        }
+      />
     );
   };
 
