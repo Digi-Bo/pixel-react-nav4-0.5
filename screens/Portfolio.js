@@ -1,17 +1,23 @@
-
 /**
- *  1. Création d'un composant Logo
- *  2. Import du composant Logo
- *  3. Intégration du composant logo dans navigationOption
- */
+ * navigation est un objet de react navigation
+ * 
+ * Via le destructuring, on récupère l'objet navigation
+ * Dès lors, on peut accéder à navigation.getParam et récupérer  name,  country ...
 
+
+/** on applique navigationOption en tant que propriété à la fonction composant portfolio 
+
+ * Dès lors, pour pouvoir accéder à getParam et aux données, 
+      nous allons avoir besoin d'un nouvel objet : navigationData    
+          Là encore , c'est un objet de react navigation
+*/
 
 import { StyleSheet, Text, View, Button } from "react-native";
 import React from "react";
 import { globalStyles } from "../style/AppStyles";
+import Colors from "../style/Colors";
 
-/** 2 */
-import Logo from './Logo'
+import Logo from "./Logo";
 
 const Portfolio = ({ navigation }) => {
   const handlePress = () => {
@@ -31,15 +37,19 @@ const Portfolio = ({ navigation }) => {
   );
 };
 
+/** on applique navigationOption en tant que propriété à la fonction composant portfolio */
+Portfolio.navigationOptions = (navigationData) => {
+  const name = navigationData.navigation.getParam("name");
+  const favColor = navigationData.navigation.getParam("favColor");
 
-
-/** 3 */
-Portfolio.navigationOptions = {
-  headerTitle:  () => <Logo/>, 
-  headerStyle:  {backgroundColor : "orangered"},
+  return {
+    headerTitle: `Profil de ${name}`,
+    headerStyle: {
+      backgroundColor: favColor,
+      headerTintColor: Colors.white,
+    },
+  };
 };
-
-
 
 export default Portfolio;
 
