@@ -17,8 +17,6 @@ Ajout du bouton info dans la barre de navigation
   Vidéo 126  
   Doc : https://github.com/vonovak/react-navigation-header-buttons
   
-  
-    
 */
 
 import React from "react";
@@ -26,7 +24,7 @@ import { StyleSheet, Text, View, Button } from "react-native";
 import { globalStyles } from "../style/AppStyles";
 import Colors from "../style/Colors";
 
-import MaterialIconsHeader from "../components/MaterialIconsHeader";
+import MaterialIconsHeaderInfo from "../components/MaterialIconsHeaderInfo";
 
 import {
   HeaderButtons,
@@ -67,7 +65,7 @@ Portfolio.navigationOptions = (navigationData) => {
     headerTintColor: Colors.white,
 
     headerRight: () => (
-      <HeaderButtons HeaderButtonComponent={MaterialIconsHeader}>
+      <HeaderButtons HeaderButtonComponent={MaterialIconsHeaderInfo}>
         <Item title="info" iconName="info-outline" />
       </HeaderButtons>
     ),
