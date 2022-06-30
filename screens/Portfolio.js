@@ -9,15 +9,32 @@
 
  * Dès lors, pour pouvoir accéder à getParam et aux données, 
       nous allons avoir besoin d'un nouvel objet : navigationData    
-          Là encore , c'est un objet de react navigation
+      Là encore , c'est un objet de react navigation
+
+
+----------------------------------------------------------------
+Ajout du bouton info dans la barre de navigation 
+  Vidéo 126  
+  Doc : https://github.com/vonovak/react-navigation-header-buttons
+  
+  
+    
 */
 
-import { StyleSheet, Text, View, Button } from "react-native";
 import React from "react";
+import { StyleSheet, Text, View, Button } from "react-native";
 import { globalStyles } from "../style/AppStyles";
 import Colors from "../style/Colors";
 
-import Logo from "./Logo";
+import MaterialIconsHeader from "../components/MaterialIconsHeader";
+
+import {
+  HeaderButtons,
+  HeaderButton,
+  Item,
+  HiddenItem,
+  OverflowMenu,
+} from "react-navigation-header-buttons";
 
 const Portfolio = ({ navigation }) => {
   const handlePress = () => {
@@ -46,8 +63,14 @@ Portfolio.navigationOptions = (navigationData) => {
     headerTitle: `Profil de ${name}`,
     headerStyle: {
       backgroundColor: favColor,
-      headerTintColor: Colors.white,
     },
+    headerTintColor: Colors.white,
+
+    headerRight: () => (
+      <HeaderButtons HeaderButtonComponent={MaterialIconsHeader}>
+        <Item title="info" iconName="info-outline" />
+      </HeaderButtons>
+    ),
   };
 };
 
