@@ -3,6 +3,18 @@ import React from "react";
 import { globalStyles } from "../style/AppStyles";
 import Colors from "../style/Colors";
 import PressableItems from "../components/PressableItems";
+import MaterialIconsHeader from "../components/MaterialIconsHeader";
+
+
+import {
+  HeaderButtons,
+  HeaderButton,
+  Item,
+  HiddenItem,
+  OverflowMenu,
+} from "react-navigation-header-buttons";
+
+
 
 const Home = ({ navigation }) => {
   const DATA = [
@@ -73,5 +85,24 @@ const Home = ({ navigation }) => {
     </View>
   );
 };
+
+
+Home.navigationOptions =  {
+
+  headerLeft: () => (
+    <HeaderButtons HeaderButtonComponent={MaterialIconsHeader}>
+      <Item 
+        title = "Menu"
+        iconName = "menu"
+      />
+    </HeaderButtons>
+
+  )
+
+  
+  
+
+};
+
 
 export default Home;

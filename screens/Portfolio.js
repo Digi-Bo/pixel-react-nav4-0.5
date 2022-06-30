@@ -24,7 +24,7 @@ import { StyleSheet, Text, View, Button } from "react-native";
 import { globalStyles } from "../style/AppStyles";
 import Colors from "../style/Colors";
 
-import MaterialIconsHeaderInfo from "../components/MaterialIconsHeaderInfo";
+import MaterialIconsHeader from "../components/MaterialIconsHeader";
 
 import {
   HeaderButtons,
@@ -65,7 +65,7 @@ Portfolio.navigationOptions = (navigationData) => {
     headerTintColor: Colors.white,
 
     headerRight: () => (
-      <HeaderButtons HeaderButtonComponent={MaterialIconsHeaderInfo}>
+      <HeaderButtons HeaderButtonComponent={MaterialIconsHeader}>
         <Item title="info" iconName="info-outline" />
       </HeaderButtons>
     ),
