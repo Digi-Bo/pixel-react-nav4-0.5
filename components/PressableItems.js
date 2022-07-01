@@ -19,7 +19,7 @@ const PressableItems = ({item, handleNavigate}) => {
 
       <View style={globalStyles.infoContainer}>
         <Text style={globalStyles.h2}>{item.country}</Text>
-        <Text style={globalStyles.text}>{item.totalImg}</Text>
+        <Text style={globalStyles.infos}>{item.photos.length}</Text>
       </View>
     </Pressable>
   );

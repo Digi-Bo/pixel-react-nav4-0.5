@@ -20,7 +20,7 @@ Ajout du bouton info dans la barre de navigation
 */
 
 import React from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
+import { Text, View, ScrollView, StyleSheet, Image, Alert } from "react-native";
 import { globalStyles } from "../style/AppStyles";
 import Colors from "../style/Colors";
 
@@ -33,22 +33,45 @@ import {
   HiddenItem,
   OverflowMenu,
 } from "react-navigation-header-buttons";
+import TouchableImage from '../components/TouchableImage';
+
+
+
 
 const Portfolio = ({ navigation }) => {
-  const handlePress = () => {
-    navigation.replace({ routeName: "Photo" });
-  };
+  const favColor = navigation.getParam("favColor");
+  const name = navigation.getParam("name");
+  const profilImg = navigation.getParam("img");
+  const desc = navigation.getParam("desc");
+  const photoArray = navigation.getParam("photos");
+
+  const selectPhoto = (photo) => {
+    navigation.navigate('Photo', photo )
+}
+
+
 
   return (
-    <View style={styles.container}>
-      <Text style={globalStyles.h1}>Portofolio</Text>
-      <Text style={globalStyles.h2}>{navigation.getParam("name")}</Text>
-      <Text style={globalStyles.h2}>{navigation.getParam("country")}</Text>
-      <Text style={globalStyles.h2}>{navigation.getParam("totalImg")}</Text>
-      <Text style={globalStyles.text}>{navigation.getParam("country")}</Text>
-      <Text style={globalStyles.text}>{navigation.getParam("favColor")}</Text>
-      <Button title="Vers Photos" onPress={handlePress} />
-    </View>
+    <ScrollView style={globalStyles.container}>
+      <View style={{ backgroundColor: favColor, ...styles.profilInfos }}>
+        <Image style={styles.smallprofileImg} source={{ uri: profilImg }} />
+        <Text style={styles.profilName}>{name}</Text>
+      </View>
+      <View style={styles.profilDescription}>
+        <Text style={styles.titleBioText}>Bio: </Text>
+        <Text style={styles.textBio}>{desc}</Text>
+      </View>
+      <View>
+        {photoArray.map((photo) => (
+          <TouchableImage
+            key={photo.id}
+            imgUrl={photo.url}
+            imgTitle={photo.title}
+            onSelectPhoto={() => selectPhoto(photo)}
+          />
+        ))}
+      </View>
+    </ScrollView>
   );
 };
 
@@ -75,11 +98,37 @@ Portfolio.navigationOptions = (navigationData) => {
 export default Portfolio;
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: "orange",
-    flex: 1,
-    justifyContent: "center",
+  profilInfos: {
     alignItems: "center",
+    padding: 10,
   },
-  text: {},
+  smallprofileImg: {
+    width: 150,
+    height: 150,
+    borderRadius: 150 / 2,
+    margin: 9,
+    borderWidth: 6,
+    borderColor: Colors.white,
+  },
+  profilName: {
+    fontFamily: "InriaSans_700Bold",
+    color: Colors.white,
+    fontSize: 25,
+  },
+  profilDescription: {
+    backgroundColor: Colors.ghost,
+    padding: 15,
+    fontSize: 25,
+    fontFamily: "InriaSans_400Regular",
+  },
+  titleBioText: {
+    fontSize: 25,
+    padding: 9,
+    fontFamily: "InriaSans_700Bold",
+  },
+  textBio: {
+    fontFamily: "InriaSans_400Regular",
+    fontSize: 20,
+    padding: 9,
+  },
 });

@@ -4,5 +4,7 @@ export default {
 
     blueColor :  'lightskyblue',
 
-    greyColor : '#333'
+    greyColor : '#333',
+    ghost: 'ghostwhite',
+    lightGrey: '#767577'
 }
