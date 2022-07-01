@@ -6,9 +6,8 @@
  */
 
 import { Button } from "react-native";
-import React from "react"
+import React from "react";
 
-import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 import Colors from "../style/Colors";
 
@@ -21,7 +20,6 @@ const screens = {
     screen: Home,
     navigationOptions: {
       title: "Accueil",
-
     },
   },
   Portfolio: {
@@ -42,12 +40,10 @@ const defaultNavigationOptions = {
       fontWeight: "bold",
       textAlign: "center",
     },
-
-
   },
 };
 
 /** 2 */
 const StackNav = createStackNavigator(screens, defaultNavigationOptions);
 
-export default createAppContainer(StackNav);
+export default StackNav;

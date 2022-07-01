@@ -1,11 +1,10 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+/** App.js */
 
-import Home from "./screens/Home";
+import { StyleSheet, Text, View } from "react-native";
 
 import AppLoading from "expo-app-loading";
 
-import StackNav from "./routes/HomeStackNav";
+import MainNavigator from "./routes/DrawerNav";
 
 import {
   useFonts,
@@ -30,15 +29,6 @@ export default () => {
   if (!fontsLoaded) {
     return <AppLoading />;
   } else {
-    return <StackNav />;
+    return <MainNavigator />;
   }
 };
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#fff',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-// });

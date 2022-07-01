@@ -5,7 +5,6 @@ import Colors from "../style/Colors";
 import PressableItems from "../components/PressableItems";
 import MaterialIconsHeader from "../components/MaterialIconsHeader";
 
-
 import {
   HeaderButtons,
   HeaderButton,
@@ -13,8 +12,6 @@ import {
   HiddenItem,
   OverflowMenu,
 } from "react-navigation-header-buttons";
-
-
 
 const Home = ({ navigation }) => {
   const DATA = [
@@ -86,23 +83,16 @@ const Home = ({ navigation }) => {
   );
 };
 
-
-Home.navigationOptions =  {
-
+Home.navigationOptions = {
   headerLeft: () => (
     <HeaderButtons HeaderButtonComponent={MaterialIconsHeader}>
-      <Item 
-        title = "Menu"
-        iconName = "menu"
+      <Item
+        title="Menu"
+        iconName="menu"
+        onPress={() => alert("menu")}
       />
     </HeaderButtons>
-
-  )
-
-  
-  
-
+  ),
 };
-
 
 export default Home;
