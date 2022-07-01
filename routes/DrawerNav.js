@@ -1,12 +1,14 @@
 import { createDrawerNavigator } from "react-navigation-drawer";
 import { createAppContainer } from "react-navigation";
 import StackNav from "./HomeStackNav";
+import BottomTabNav from './BottomTabNav';
+
 import FaqStackNav from "./FaqStackNav";
 import Colors from "../style/Colors";
 
 const RouteConfig = {
   Home: {
-    screen: StackNav,
+    screen: BottomTabNav,
     navigationOptions: {
       drawerLabel: "Accueil",
     },
@@ -21,7 +23,7 @@ const RouteConfig = {
 
 const DrawerNavigatorConfig = {
   hideStatusBar: true,
-  drawerBackgroundColor: "#333",
+  drawerBackgroundColor: Colors.greyColor,
   // drawerPosition: "right",
   //drawerType: "slide",
   drawerWidth: "80%",
@@ -30,7 +32,7 @@ const DrawerNavigatorConfig = {
       fontSize: 18,
     },
     inactiveTintColor : Colors.white,
-    activeTintColor  : Colors.blueColor,
+    activeTintColor  : Colors.blueColor
 
   },
 };

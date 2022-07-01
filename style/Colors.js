@@ -2,5 +2,7 @@ export default {
     white: "#fff",
     clicked : 'palevioletred',
 
-    blueColor :  'lightskyblue'
+    blueColor :  'lightskyblue',
+
+    greyColor : '#333'
 }

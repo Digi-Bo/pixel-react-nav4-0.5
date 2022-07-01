@@ -24,9 +24,15 @@ const screens = {
   },
   Portfolio: {
     screen: Portfolio,
+    navigationOptions: {
+      title: "Portfolio",
+    },
   },
   Photo: {
     screen: Photo,
+    navigationOptions: {
+      title: "Photos",
+    },
   },
 };
 
